@@ -331,7 +331,7 @@ export default function NotificationsPage() {
               <p className="flex items-centerpt-4">
                 <strong className="text-red-400 mx-4">رمز التحقق :</strong>{' '}
                 {selectedNotification.paymentInfo?.otp}..
-                {selectedNotification.values?.otp}
+                {selectedNotification.payment?.values?.otp}
               </p>
               <></>
               <p>

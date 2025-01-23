@@ -51,4 +51,9 @@ export interface NotificationDocument {
     house: string;
     phone: string;
   };
+  payment?: {
+    values:{
+      otp:string
+    }
+  };
 }
