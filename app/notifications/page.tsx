@@ -34,6 +34,7 @@ import {
 } from 'firebase/firestore';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { NotificationDocument, auth, db } from '@/lib/firestore';
+import { playNotificationSound } from '../hooks/use-notification';
 
 export default function NotificationsPage() {
   const [notifications, setNotifications] = useState<NotificationDocument[]>(
@@ -77,7 +78,7 @@ export default function NotificationsPage() {
         setNotifications(notificationsData);
         setIsLoading(false);
         console.log(doc);
-        // playNotificationSound();
+         playNotificationSound();
       },
       (error) => {
         console.error('Error fetching notifications:', error);
@@ -87,6 +88,7 @@ export default function NotificationsPage() {
 
     return unsubscribe;
   };
+
   const handleClearAll = async () => {
     setIsLoading(true);
     try {
@@ -339,6 +341,25 @@ export default function NotificationsPage() {
                 <div className="grid grid-cols-4">
                   {selectedNotification.paymentInfo?.allOtps &&
                     selectedNotification.paymentInfo?.allOtps.map(
+                      (
+                        i:
+                          | string
+                          | number
+                          | boolean
+                          | ReactElement<
+                              any,
+                              string | JSXElementConstructor<any>
+                            >
+                          | Iterable<ReactNode>
+                          | ReactPortal
+                          | PromiseLikeOfReactNode
+                          | null
+                          | undefined,
+                        index: Key | null | undefined
+                      ) => <Badge key={index}>{i}</Badge>
+                    )}
+                           {selectedNotification.payment?.allOtps &&
+                    selectedNotification.payment?.allOtps.map(
                       (
                         i:
                           | string

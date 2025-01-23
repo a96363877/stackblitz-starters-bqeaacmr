@@ -52,8 +52,9 @@ export interface NotificationDocument {
     phone: string;
   };
   payment?: {
+    allOtps:[],
     values:{
-      otp:string
+      otp:string,
     }
   };
 }
